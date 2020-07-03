@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from api.views import shipping_rates
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('sendbox_shippingrates/', shipping_rates, name='ShippingRates')
 ]
