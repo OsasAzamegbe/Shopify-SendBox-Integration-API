@@ -18,5 +18,5 @@ from django.urls import path
 from api.views import shipping_rates
 
 urlpatterns = [
-    path('sendbox_shippingrates/', shipping_rates, name='ShippingRates')
+    path('', shipping_rates, name='ShippingRates')
 ]

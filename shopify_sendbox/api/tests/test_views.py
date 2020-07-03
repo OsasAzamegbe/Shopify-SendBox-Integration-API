@@ -13,7 +13,7 @@ class TestMyAPI(APITestCase):
             "country": "Nigeria",
             "postal_code": "K2P1L4",
             "province": "Lagos",
-            "city": "Yaba",
+            "city": "Lagos",
             "name": None,
             "address1": "150 Elgin St.",
             "address2": "",
@@ -52,12 +52,25 @@ class TestMyAPI(APITestCase):
             "properties": None,
             "product_id": 48447225880,
             "variant_id": 258644705304
+            },
+            {
+            "name": "Long Sleeve T-Shirt",
+            "sku": "",
+            "quantity": 1,
+            "grams": 4000,
+            "price": 1999,
+            "vendor": "Jamie D's Emporium",
+            "requires_shipping": True,
+            "taxable": True,
+            "fulfillment_service": "manual",
+            "properties": None,
+            "product_id": 48447200880,
+            "variant_id": 258644005304
             }],
             "currency": "USD",
             "locale": "en"
         }
         response = self.client.post(reverse('ShippingRates'), body, format='json')
-        print(response.status_code)
 
         self.assertEqual(201, response.status_code)
         self.assertGreaterEqual(len(response.data), 1)
@@ -67,6 +80,12 @@ class TestMyAPI(APITestCase):
             self.assertIn("total_price", item)
             self.assertIn("description", item)
             self.assertIn("currency", item)
+            self.assertIsNotNone(item["service_name"])
+            self.assertIsNotNone(item["service_code"])
+            self.assertIsNotNone(item["total_price"])
+            self.assertIsNotNone(item["description"])
+            self.assertIsNotNone(item["currency"])
+            
 
 
 

@@ -3,12 +3,13 @@ from rest_framework.response import Response
 from rest_framework import status
 import requests
 import json
+from .keys import *
 
 
 def get_shipping_quotes(origin_country, origin_state, origin_city, destination_country, destination_state, destination_city, weight):
     url = 'https://live.sendbox.co/shipping/shipment_delivery_quote'
     # Header variables
-    authorization_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzZW5kYm94LmF1dGgiLCJhaWQiOiI1ZWM4MTY2NDBlZDU0MjAwMWUyZDMzMmUiLCJ0d29fZmEiOmZhbHNlLCJ1aWQiOiI1ZGIwNGVlMTNjMDQzYjAwNGE3YTYxOWQiLCJleHAiOjE2MDAwMDUwNTR9.n5EM-W9si0nGAlSbjTTaIhJ6iKsjIY3X2uuBOul-X_g'
+    authorization_key = sendbox_authorization_key
 
     content_type = 'application/json'
 
@@ -39,11 +40,14 @@ def get_shipping_quotes(origin_country, origin_state, origin_city, destination_c
     response = requests.post(url, data=json.dumps(payload), headers=headers)
     if response.status_code == 201:
         return json.loads(response.content)['rates']
-    return "NOT 201"
+    return None
 
 
 @api_view(['POST'])
 def shipping_rates(request):
+    """
+    Return Shipping Rates data from SendBox to Shopify Carrier Services API
+    """
     post_data = request.data
     total_shipping_price = 0.0
     # Parse required variables from incoming POST request
@@ -60,6 +64,8 @@ def shipping_rates(request):
         shipping_data = get_shipping_quotes(
             origin_country, origin_state, origin_city, destination_country, destination_state, destination_city, weight
         )
+        if not shipping_data:
+            return Response({'errors': 'Request Data Values/Format Invalid'}, status=status.HTTP_400_BAD_REQUEST)
         rate = shipping_data[0]
         total_shipping_price += rate['fee']
 
@@ -76,6 +82,4 @@ def shipping_rates(request):
     response.append(body)
 
     return Response(response, status=status.HTTP_201_CREATED)
-
-    
 
