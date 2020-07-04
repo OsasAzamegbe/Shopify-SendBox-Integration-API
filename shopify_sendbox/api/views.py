@@ -70,8 +70,8 @@ def shipping_rates(request):
         total_shipping_price += rate['fee']
 
     # Create response with shipping rates data
-    response = []
-    body = {
+
+    response = {
         "rates": [
             {
                 "service_name": rate['name'],
@@ -83,7 +83,6 @@ def shipping_rates(request):
             }
         ]
     }
-    response.append(body)
 
     return Response(response, status=status.HTTP_201_CREATED)
 
