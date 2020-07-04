@@ -72,8 +72,9 @@ def shipping_rates(request):
     if len(destination_country) == 2:
         destination_country = country_info[destination_country]      
     destination_state = post_data['destination']['province']     
-    destination_city = post_data['destination']['city']     
-    
+    destination_city = post_data['destination']['city']
+    if not destination_state:
+        destination_state = destination_city    
 
         # Get shipping rates
     for item in post_data['items']:
