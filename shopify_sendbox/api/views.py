@@ -54,10 +54,10 @@ def shipping_rates(request):
             response = {
                 "rates": [
                     {
-                        "service_name": post_data['origin']['country'],
+                        "service_name": post_data['destination']['city'],
                         "service_code": "standard",
                         "total_price": post_data['items'][0]['grams'],
-                        "description": post_data['origin']['province'],
+                        "description": post_data['destination']['province'],
                         "currency": "USD",
                         "max_delivery_date": "2020-07-11"
                     }
