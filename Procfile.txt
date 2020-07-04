@@ -1,1 +1,1 @@
-web: gunicorn movies.wsgi --pythonpath=movies --log-file -
+web: gunicorn shopify_sendbox.wsgi --pythonpath=shopify_sendbox --log-file -
