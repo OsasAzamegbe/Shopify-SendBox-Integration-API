@@ -72,12 +72,16 @@ def shipping_rates(request):
     # Create response with shipping rates data
     response = []
     body = {
-        "service_name": rate['name'],
-        "service_code": rate['code'],
-        "total_price": str(int(total_shipping_price)),
-        "description": rate['description'],
-        "currency": "USD",
-        "max_delivery_date": rate['delivery_eta'][:10]
+        "rates": [
+            {
+                "service_name": rate['name'],
+                "service_code": rate['code'],
+                "total_price": str(int(total_shipping_price)),
+                "description": rate['description'],
+                "currency": "USD",
+                "max_delivery_date": rate['delivery_eta'][:10]
+            }
+        ]
     }
     response.append(body)
 
