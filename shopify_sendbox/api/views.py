@@ -56,8 +56,8 @@ def shipping_rates(request):
                     {
                         "service_name": post_data['origin']['country'],
                         "service_code": "standard",
-                        "total_price": post_data['origin']['province'],
-                        "description": post_data['items'][0]['grams'],
+                        "total_price": post_data['items'][0]['grams'],
+                        "description": post_data['origin']['province'],
                         "currency": "USD",
                         "max_delivery_date": "2020-07-11"
                     }
