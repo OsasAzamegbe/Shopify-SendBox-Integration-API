@@ -76,7 +76,7 @@ def shipping_rates(request):
         "service_code": rate['code'],
         "total_price": str(int(total_shipping_price)),
         "description": rate['description'],
-        "currency": "NGN",
+        "currency": "USD",
         "max_delivery_date": rate['delivery_eta'][:10]
     }
     response.append(body)
