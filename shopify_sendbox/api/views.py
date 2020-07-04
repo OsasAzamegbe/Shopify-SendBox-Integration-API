@@ -48,7 +48,7 @@ def shipping_rates(request):
     """
     Return Shipping Rates data from SendBox to Shopify Carrier Services API
     """
-    post_data = request.data
+    post_data = request.data['rate']
     total_shipping_price = 0.0
     # Parse required variables from incoming POST request
     for item in post_data['items']:
