@@ -48,6 +48,21 @@ def shipping_rates(request):
     """
     Return Shipping Rates data from SendBox to Shopify Carrier Services API
     """
+    response = {
+        "rates": [
+            {
+                "service_name": "Standard Delivery",
+                "service_code": "standard",
+                "total_price": "1294",
+                "description": "Pickup and delivery within 3 - 5 business days",
+                "currency": "USD",
+                "max_delivery_date": "2020-07-11"
+            }
+        ]
+    }
+
+    return Response(response, status=status.HTTP_201_CREATED)
+
     post_data = request.data['rate']
     total_shipping_price = 0.0
     # Parse required variables from incoming POST request
