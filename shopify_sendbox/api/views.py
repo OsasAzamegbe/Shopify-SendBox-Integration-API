@@ -50,13 +50,14 @@ def shipping_rates(request):
     """
     if "rate" in request.data:
         if 'origin' in request.data['rate'] and 'destination' in request.data['rate']:
+            post_data = request.data['rate']
             response = {
                 "rates": [
                     {
-                        "service_name": "Standard Delivery",
+                        "service_name": post_data['origin']['country'],
                         "service_code": "standard",
-                        "total_price": "1294",
-                        "description": "Pickup and delivery within 3 - 5 business days",
+                        "total_price": post_data['origin']['province'],
+                        "description": post_data['items'][0]['grams'],
                         "currency": "USD",
                         "max_delivery_date": "2020-07-11"
                     }
