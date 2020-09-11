@@ -39,23 +39,6 @@ def shipping_rates(request):
     """
     Return Shipping Rates data from SendBox to Shopify Carrier Services API
     """
-    # if "rate" in request.data:
-        # if 'origin' in request.data['rate'] and 'destination' in request.data['rate']:
-        #     post_data = request.data['rate']
-        #     response = {
-        #         "rates": [
-        #             {
-        #                 "service_name": country_info[post_data['destination']['country']],
-        #                 "service_code": "standard",
-        #                 "total_price": post_data['items'][0]['grams'],
-        #                 "description": post_data['destination']['province'],
-        #                 "currency": "USD",
-        #                 "max_delivery_date": "2020-07-11"
-        #             }
-        #         ]
-        #     }
-
-        #     return Response(response, status=status.HTTP_201_CREATED)
 
     post_data = request.data['rate']
     total_shipping_price = 0.0
