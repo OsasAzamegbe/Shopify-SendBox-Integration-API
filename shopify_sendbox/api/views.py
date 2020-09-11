@@ -36,7 +36,7 @@ def get_shipping_quotes(origin_country, origin_state, origin_city, destination_c
 
 
 @api_view(['POST'])
-def shipping_rates(request):
+def shipping_rates(request, *args, **kwargs):
     """
     Return Shipping Rates data from SendBox to Shopify Carrier Services API
     """

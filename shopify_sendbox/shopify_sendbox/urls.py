@@ -15,16 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-# from drf_yasg.views import get_schema_view
-# from drf_yasg import openapi
-from rest_framework.documentation import include_docs_urls
+# from rest_framework.documentation import include_docs_urls
 
-description="""
-This API receives requests from Shopify\'s \"Carrier Services\" API and uses the SendBox \"Get Shipping Rates\" API to return calculated shipping rates using shipping information received in the body of the post request.
-"""
+
+# description="""
+# This API receives requests from Shopify\'s \"Carrier Services\" API and uses the SendBox \"Get Shipping Rates\" API to return calculated shipping rates using shipping information received in the body of the post request.
+# """
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('api.urls')),
-    path('docs/', include_docs_urls(title='Shopify Shipping Rates API', description=description))
+    # path('docs/', include_docs_urls(title='Shopify Shipping Rates API', description=description)),
 ]
