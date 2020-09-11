@@ -1,16 +1,17 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from .countries import country_info
 import requests
 import json
-from .keys import *
-from .countries import country_info
+from shopify_sendbox.keys import SENDBOX_AUTHORIZATION_KEY
 
 
 def get_shipping_quotes(origin_country, origin_state, origin_city, destination_country, destination_state, destination_city, weight):
     url = 'https://live.sendbox.co/shipping/shipment_delivery_quote'
     # Header variables
-    authorization_key = sendbox_authorization_key
+    authorization_key = SENDBOX_AUTHORIZATION_KEY
+    
 
     content_type = 'application/json'
     payload = {
