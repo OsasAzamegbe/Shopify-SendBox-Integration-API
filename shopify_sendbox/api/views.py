@@ -40,7 +40,12 @@ def shipping_rates(request, *args, **kwargs):
     """
     Return Shipping Rates data from SendBox to Shopify Carrier Services API.
 
-    Request body should contain shipping info in json format for the required shipping rates to be calculated. 
+    Request body should contain shipping info in json format for the required shipping rates to be calculated.
+
+    The POST request should be sent to:
+    
+        https://shopify-sendbox.herokuapp.com/api/v1/sendboxrate
+
 
     A sample request body is shown below:
 
