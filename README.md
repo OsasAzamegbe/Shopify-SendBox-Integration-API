@@ -7,9 +7,9 @@ This is so because the shipping rates returned are exact rates the Shopify merch
 ## API Documentation
 https://shopify-sendbox.herokuapp.com/api/v1/doc/
 
-![API screenshot 1](/doc screenshots/Screenshot (4).png?raw=true)
+![API screenshot 1](doc_screenshots/Screenshot4.png?raw=true)
 
-![API screenshot 2](/doc screenshots/Screenshot (5).png?raw=true)
+![API screenshot 2](doc_screenshots/Screenshot5.png?raw=true)
 #### *TL; DR* - Screenshots of API documentation
 
 
